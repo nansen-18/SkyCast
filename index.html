@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyCast 🌤 - Weather App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div id="rain-container" class="weather-animation"></div>
+    <div id="snow-container" class="weather-animation"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="app-title">SkyCast 🌤</h1>
+            <div class="controls">
+                <button id="theme-toggle" class="control-btn" title="Toggle theme">🌙</button>
+                <button id="unit-toggle" class="control-btn" title="Toggle units">°C</button>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="city-input" 
+                    placeholder="Enter city name..."
+                    autocomplete="off"
+                >
+                <button id="search-btn" class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <button id="location-btn" class="location-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Use My Location
+            </button>
+        </div>
+
+        <!-- Weather Card -->
+        <div class="weather-card" id="weather-card">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Loading weather data...</p>
+            </div>
+
+            <div class="weather-content" id="weather-content" style="display: none;">
+                <!-- Main Weather Info -->
+                <div class="main-weather">
+                    <div class="location-info">
+                        <h2 class="city-name" id="city-name">London</h2>
+                        <p class="country" id="country">UK</p>
+                        <p class="local-time" id="local-time">12:00 PM</p>
+                    </div>
+                    <div class="temperature-section">
+                        <img class="weather-icon" id="weather-icon" src="" alt="Weather icon">
+                        <div class="temp-info">
+                            <span class="temperature" id="temperature">20°</span>
+                            <p class="weather-description" id="weather-description">Partly Cloudy</p>
+                            <p class="feels-like" id="feels-like">Feels like 22°</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weather Details -->
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">💧</div>
+                        <div class="detail-info">
+                            <span class="detail-label">Humidity</span>
+                            <span class="detail-value" id="humidity">65%</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">💨</div>
+                        <div class="detail-info">
+                            <span class="detail-label">Wind Speed</span>
+                            <span class="detail-value" id="wind-speed">12 km/h</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">👁</div>
+                        <div class="detail-info">
+                            <span class="detail-label">Visibility</span>
+                            <span class="detail-value" id="visibility">10 km</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">📊</div>
+                        <div class="detail-info">
+                            <span class="detail-label">Pressure</span>
+                            <span class="detail-value" id="pressure">1013 hPa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="error-message" style="display: none;">
+            <div class="error-icon">⚠️</div>
+            <div class="error-content">
+                <h3>City Not Found</h3>
+                <p>Please check the city name and try again.</p>
+            </div>
+        </div>
+
+        <!-- API Key Notice -->
+        <div class="api-notice" id="api-notice">
+            <div class="notice-content">
+                <h3>⚠️ API Key Required</h3>
+                <p>To use this weather app, you need to add your OpenWeatherMap API key.</p>
+                <ol>
+                    <li>Get your free API key from <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap</a></li>
+                    <li>Replace "YOUR_API_KEY_HERE" in the script.js file</li>
+                    <li>Refresh the page to start using the app</li>
+                </ol>
+                <button id="dismiss-notice" class="dismiss-btn">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
