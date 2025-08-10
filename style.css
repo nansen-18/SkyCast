@@ -374,6 +374,23 @@ body {
     font-size: 1rem;
 }
 
+/* Weather Fun Fact */
+.fun-fact-container {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.fun-fact {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.8;
+}
+
 /* Error Message */
 .error-message {
     background: rgba(229, 62, 62, 0.1);

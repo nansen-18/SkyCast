@@ -31,13 +31,41 @@ const elements = {
     
     // Animation containers
     rainContainer: document.getElementById('rain-container'),
-    snowContainer: document.getElementById('snow-container')
+    snowContainer: document.getElementById('snow-container'),
+    
+    // Fun fact element
+    funFact: document.getElementById('fun-fact')
 };
 
 // App State
 let currentWeatherData = null;
 let currentUnit = 'metric'; // 'metric' for Celsius, 'imperial' for Fahrenheit
 let currentTheme = 'light';
+
+// Weather Fun Facts Array
+const weatherFunFacts = [
+    "Lightning strikes the Earth about 100 times per second! ⚡",
+    "The fastest recorded wind speed was 253 mph during Tropical Cyclone Olivia in 1996. 💨",
+    "Antarctica is technically a desert - it receives less than 2 inches of precipitation per year! 🏜️",
+    "A single raindrop can fall at speeds up to 20 mph depending on its size. 💧",
+    "The largest hailstone ever recorded weighed 1.94 pounds and was 8 inches in diameter! 🧊",
+    "Rainbows can only be seen when the sun is behind you and it's raining in front of you. 🌈",
+    "The smell of rain has a name: 'petrichor' - it comes from oils secreted by plants during dry periods. 🌧️",
+    "Snowflakes can take up to an hour to fall from cloud to ground. ❄️",
+    "The hottest temperature ever recorded on Earth was 134°F (56.7°C) in Death Valley, California. 🌡️",
+    "Tornadoes can spin at speeds over 300 mph, but most last only a few minutes. 🌪️",
+    "Clouds can weigh over a million pounds, but they float because they're less dense than dry air! ☁️",
+    "The coldest temperature ever recorded was -128.6°F (-89.2°C) in Antarctica. 🥶",
+    "A hurricane releases the energy equivalent of 10 atomic bombs per second! 🌀",
+    "Weather satellites can detect temperature differences as small as 0.1°C from space. 🛰️",
+    "The water cycle moves about 40 trillion gallons of water through the atmosphere daily. 🌊"
+];
+
+// Function to get a random weather fun fact
+function getRandomWeatherFact() {
+    const randomIndex = Math.floor(Math.random() * weatherFunFacts.length);
+    return weatherFunFacts[randomIndex];
+}
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', initializeApp);
@@ -222,6 +250,9 @@ function updateUI(data) {
     // Update local time
     updateLocalTime(data.timezone);
     
+    // Update fun fact
+    updateFunFact();
+    
     // Update background and animations
     updateWeatherBackground(data.weather[0].main.toLowerCase());
     
@@ -247,6 +278,11 @@ function updateLocalTime(timezone) {
     updateTime();
     // Update every minute
     setInterval(updateTime, 60000);
+}
+
+function updateFunFact() {
+    const fact = getRandomWeatherFact();
+    elements.funFact.textContent = fact;
 }
 
 function updateWeatherBackground(weather) {
